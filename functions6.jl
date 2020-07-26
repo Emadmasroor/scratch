@@ -1,11 +1,3 @@
-function short(variable)
-    if typeof(variable)==Array{Float64,1}
-        return round.(variable,digits=3)
-    else
-        return round(variable,digits=3)
-    end
-end
-
 ###############################
 ### Right-hand-side of ODEs ###
 ###############################
@@ -395,9 +387,9 @@ function ψ_left(r,θ)
     H = -(-0.8*(1 - (0.8 + r*cos(θ))/sqrt(0.64 + 1.6*r*cos(θ) + r^2)) - 1.0*(1 - (1.25 + r*cos(θ))/sqrt(1.5625 + 2.5*r*cos(θ) + r^2)) + 1.0*(0.8 + r - sqrt(0.64 + 1.6*r*cos(θ) + r^2)))
 end
 
-#########################
-### Plotting function ###
-#########################
+############################################
+### Plotting and miscellaneous functions ###
+############################################
 
 function showTrajectory(r,θ,H,t)
     p1 = plot(θ, r, proj = :polar, color=:black, seriestype=:scatter,
@@ -406,3 +398,12 @@ function showTrajectory(r,θ,H,t)
         seriestype=:scatter,markersize=0.2,linestyle=:solid,legend=:none,size=(500,250))
     plot(p1,p2,dpi=600)
 end
+
+function short(variable)
+    if typeof(variable)==Array{Float64,1}
+        return round.(variable,digits=3)
+    else
+        return round(variable,digits=3)
+    end
+end
+
