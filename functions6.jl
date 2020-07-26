@@ -387,9 +387,9 @@ function ψ_left(r,θ)
     H = -(-0.8*(1 - (0.8 + r*cos(θ))/sqrt(0.64 + 1.6*r*cos(θ) + r^2)) - 1.0*(1 - (1.25 + r*cos(θ))/sqrt(1.5625 + 2.5*r*cos(θ) + r^2)) + 1.0*(0.8 + r - sqrt(0.64 + 1.6*r*cos(θ) + r^2)))
 end
 
-############################################
-### Plotting and miscellaneous functions ###
-############################################
+#########################
+### Plotting, Miscel. ###
+#########################
 
 function showTrajectory(r,θ,H,t)
     p1 = plot(θ, r, proj = :polar, color=:black, seriestype=:scatter,
