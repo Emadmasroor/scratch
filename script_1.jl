@@ -31,7 +31,7 @@ for i in 1:300
     println("--->>>Integrating right-handed system, step ",stepnum)
     # Update the manifold we are on, only if we are not trapped on the right
     if ~righttrapped && ~lefttrapped
-        println("updating ψvalue on the right")
+        #println("updating ψvalue on the right")
         ψvalue = ψ_right(u0[1],u0[2])
         cb1a = ManifoldProjection(energyManifold_right)
     end
@@ -40,12 +40,12 @@ for i in 1:300
     if ~lefttrapped
         prob1 = ODEProblem(ODErhs_right!,u0,(2*switchΔt*(i-1),2*switchΔt*(i-1)+switchΔt), callback=CallbackSet(cb1a,cb1b))
         sol1 = solve(prob1,Tsit5(),abstol=1e-8,reltol=1e-8)
-        println("Sent particle from ",short(sol1[:,1])," to ",short(sol1[:,end]))
-        println("Currently, ψvalue = ",short(ψvalue))
+        #println("Sent particle from ",short(sol1[:,1])," to ",short(sol1[:,end]))
+        #println("Currently, ψvalue = ",short(ψvalue))
     else
         prob1 = ODEProblem(ODErhs_empty!,sol2[:,end],(2*switchΔt*(i-1),2*switchΔt*(i-1)+switchΔt))
-        println("!!! Particle trapped in left-pipe. Not integrating, sit and wait.")
-        println("Meanwhile, current value is (r,θ) = ( ",round.(sol2[:,end],digits=3),")")
+        #println("!!! Particle trapped in left-pipe. Not integrating, sit and wait.")
+        #println("Meanwhile, current value is (r,θ) = ( ",round.(sol2[:,end],digits=3),")")
         sol1 = solve(prob1,Euler(),dt=0.001)
     end
     # Save information into the relevant arrays
@@ -61,7 +61,7 @@ for i in 1:300
         # This code will only be executed if the system wasn't initially trapped.
         # If it was trapped, we would like to delay the execution of this snippet
         # of code until the particle has emerged.
-        println("updating ψvalue on the left")
+        #println("updating ψvalue on the left")
         ψvalue = ψ_left(sol1[1,end],sol1[2,end])
         cb2a = ManifoldProjection(energyManifold_left)
     end
@@ -70,12 +70,12 @@ for i in 1:300
     if ~righttrapped
         prob2 = ODEProblem(ODErhs_left!,sol1[:,end],(2*switchΔt*i-switchΔt,2*switchΔt*i),callback=CallbackSet(cb2a,cb2b))
         sol2 = solve(prob2,Tsit5(),abstol=1e-8,reltol=1e-8)
-        println("Sent particle from ",short(sol2[:,1])," to ",short(sol2[:,end]))
-        println("Currently, ψvalue = ",short(ψvalue))
+        #println("Sent particle from ",short(sol2[:,1])," to ",short(sol2[:,end]))
+        #println("Currently, ψvalue = ",short(ψvalue))
     else
         prob2 = ODEProblem(ODErhs_empty!,sol1[:,end],(2*switchΔt*i-switchΔt,2*switchΔt*i))
-        println("!!! Particle trapped in right-pipe. Not integrating, sit and wait.")
-        println("Meanwhile, current value is (r,θ) = ( ",short(sol1[:,end]),")")
+        #println("!!! Particle trapped in right-pipe. Not integrating, sit and wait.")
+        #println("Meanwhile, current value is (r,θ) = ( ",short(sol1[:,end]),")")
         sol2 = solve(prob2,Euler(),dt=0.001)
     end
     # Save information into the relevant arrays
