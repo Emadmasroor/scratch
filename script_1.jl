@@ -22,7 +22,7 @@ cb1b = DiscreteCallback(sinkRight,ejectRight!)
 cb2b = DiscreteCallback(sinkLeft,ejectLeft!)
 
 global u0 = [0.6,3π/4]
-for i in 1:300
+for i in 1:80
     # Declare all global variables
     global u0, switchΔt, stepnum, lefttrapped, righttrapped, sol1, sol2, cb1a,cb1b,cb2a,cb2b,ψvalue
     ##############---Right---####################
