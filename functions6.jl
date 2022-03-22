@@ -78,7 +78,7 @@ global stepnum,righttrapped,ψvalue,ϵ
     if righttrapped
         # Forget about the most recent few time steps and start over from
         # the beginning of this integration cycle.
-        println("sink-eject detected but particle was already trapped")
+        # println("sink-eject detected but particle was already trapped")
         r1 = integrator.sol[1,1]
         θ1 = integrator.sol[2,1]
         t1 = integrator.sol.t[1]
@@ -100,14 +100,14 @@ global stepnum,righttrapped,ψvalue,ϵ
         integrator.t = t1 + tunneltime
         righttrapped = false
         # Report
-        println("... Report of sink-eject event ...")
-        println("Before ejection, (r,θ)        = (",r1,",",θ1,")")
-        println("Entered tube at time = ",t1)
-        println("Traveled inside tube = ",tunneltime)
-        println("Ejected from tube at = ",ejecttime)
-        println("Value of ψ before sink-eject = ",ψvalue)
-        println("Value of ψ after sink-eject  = ",ψ2)
-        println("After ejection, (r,θ)        = (",r2,",",θ2,")")
+        # println("... Report of sink-eject event ...")
+        # println("Before ejection, (r,θ)        = (",r1,",",θ1,")")
+        # println("Entered tube at time = ",t1)
+        # println("Traveled inside tube = ",tunneltime)
+        # println("Ejected from tube at = ",ejecttime)
+        # println("Value of ψ before sink-eject = ",ψvalue)
+        # println("Value of ψ after sink-eject  = ",ψ2)
+        # println("After ejection, (r,θ)        = (",r2,",",θ2,")")
     else
 
         # This function releases particle close to r = L+ϵ, θ = ±(π-0.1)
@@ -154,38 +154,38 @@ global stepnum,righttrapped,ψvalue,ϵ
             integrator.u[2] = θ_trapped
             integrator.t = stepnum*switchΔt
             # Report
-            println("... Report of sink-eject event ....")
-            println("Before ejection, (x,y)        = (",x1,",",y1,")")
-            println("Value of ψ before sink-eject = ",ψvalue)
-            println("Value of ψ after sink-eject  = ",ψ2)
-            println("After ejection, (r,θ)  should be (",r2,",",θ2,")")
-            println("Entered tube at time = ",t1)
-            println("Targeted ejection time was = ",ejecttime)
-            println("Proposed tunnel duration exceeds total available time!")
-            println("Will be ejected instead at ",ejecttime+switchΔt)
-            println("Traveled only for Δt = ",Δt)
-            println("Particle stopped inside pipe")
-            println("Stopped at (x,y)= (",x2,",",y2,")")
-            println("Stopped at (r,θ)= (",r_trapped,",",θ_trapped,")")
-            println("Sending integrator to ",stepnum*switchΔt)
+            # println("... Report of sink-eject event ....")
+            # println("Before ejection, (x,y)        = (",x1,",",y1,")")
+            # println("Value of ψ before sink-eject = ",ψvalue)
+            # println("Value of ψ after sink-eject  = ",ψ2)
+            # println("After ejection, (r,θ)  should be (",r2,",",θ2,")")
+            # println("Entered tube at time = ",t1)
+            # println("Targeted ejection time was = ",ejecttime)
+            # println("Proposed tunnel duration exceeds total available time!")
+            # println("Will be ejected instead at ",ejecttime+switchΔt)
+            # println("Traveled only for Δt = ",Δt)
+            # println("Particle stopped inside pipe")
+            # println("Stopped at (x,y)= (",x2,",",y2,")")
+            # println("Stopped at (r,θ)= (",r_trapped,",",θ_trapped,")")
+            # println("Sending integrator to ",stepnum*switchΔt)
         else
             integrator.u[1] = r2
             integrator.u[2] = θ2
             integrator.t += tunneltime
             # Report
-            println("... Report of sink-eject event ...")
-            println("Before ejection, (r,θ)        = (",r1,",",θ1,")")
-            println("Entered tube at time = ",t1)
-            println("Traveled inside tube = ",tunneltime)
-            println("Ejected from tube at = ",ejecttime)
-            println("Value of ψ before sink-eject = ",ψvalue)
-            println("Value of ψ after sink-eject  = ",ψ2)
-            println("After ejection, (r,θ)        = (",r2,",",θ2,")")
+            # println("... Report of sink-eject event ...")
+            # println("Before ejection, (r,θ)        = (",r1,",",θ1,")")
+            # println("Entered tube at time = ",t1)
+            # println("Traveled inside tube = ",tunneltime)
+            # println("Ejected from tube at = ",ejecttime)
+            # println("Value of ψ before sink-eject = ",ψvalue)
+            # println("Value of ψ after sink-eject  = ",ψ2)
+            # println("After ejection, (r,θ)        = (",r2,",",θ2,")")
             if ~isapprox(ψ2,ψvalue)
-                println("----Warning---Too much deviation from required ψ---")
+                # println("----Warning---Too much deviation from required ψ---")
             end
         end
-        println("..................................")
+        # println("..................................")
     end
 end
 
@@ -207,7 +207,7 @@ function ejectLeft!(integrator)
     if lefttrapped
         # Forget about the most recent few time steps and start over from
         # the beginning of this integration cycle.
-        println("sink-eject detected but particle was already trapped")
+        # println("sink-eject detected but particle was already trapped")
         r1 = integrator.sol[1,1]
         θ1 = integrator.sol[2,1]
         t1 = integrator.sol.t[1]
@@ -229,14 +229,14 @@ function ejectLeft!(integrator)
         integrator.t = t1 + tunneltime
         lefttrapped = false
         # Report
-        println("... Report of sink-eject event ...")
-        println("Before ejection, (r,θ)        = (",r1,",",θ1,")")
-        println("Entered tube at time = ",t1)
-        println("Traveled inside tube = ",tunneltime)
-        println("Ejected from tube at = ",ejecttime)
-        println("Value of ψ before sink-eject = ",ψvalue)
-        println("Value of ψ after sink-eject  = ",ψ2)
-        println("After ejection, (r,θ)        = (",r2,",",θ2,")")
+        # println("... Report of sink-eject event ...")
+        # println("Before ejection, (r,θ)        = (",r1,",",θ1,")")
+        # println("Entered tube at time = ",t1)
+        # println("Traveled inside tube = ",tunneltime)
+        # println("Ejected from tube at = ",ejecttime)
+        # println("Value of ψ before sink-eject = ",ψvalue)
+        # println("Value of ψ after sink-eject  = ",ψ2)
+        # println("After ejection, (r,θ)        = (",r2,",",θ2,")")
     else
 
         # This function releases particle close to r = L+ϵ, θ = ±(π-0.1)
@@ -283,38 +283,38 @@ function ejectLeft!(integrator)
             integrator.u[2] = θ_trapped
             integrator.t = stepnum*switchΔt
             # Report
-            println("... Report of sink-eject event ....")
-            println("Before ejection, (x,y)        = (",x1,",",y1,")")
-            println("Value of ψ before sink-eject = ",ψvalue)
-            println("Value of ψ after sink-eject  = ",ψ2)
-            println("After ejection, (r,θ)  should be (",r2,",",θ2,")")
-            println("Entered tube at time = ",t1)
-            println("Targeted ejection time was = ",ejecttime)
-            println("Proposed tunnel duration exceeds total available time!")
-            println("Will be ejected instead at ",ejecttime+switchΔt)
-            println("Traveled only for Δt = ",Δt)
-            println("Particle stopped inside pipe")
-            println("Stopped at (x,y)= (",x2,",",y2,")")
-            println("Stopped at (r,θ)= (",r_trapped,",",θ_trapped,")")
-            println("Sending integrator to ",stepnum*switchΔt)
+            # println("... Report of sink-eject event ....")
+            # println("Before ejection, (x,y)        = (",x1,",",y1,")")
+            # println("Value of ψ before sink-eject = ",ψvalue)
+            # println("Value of ψ after sink-eject  = ",ψ2)
+            # println("After ejection, (r,θ)  should be (",r2,",",θ2,")")
+            # println("Entered tube at time = ",t1)
+            # println("Targeted ejection time was = ",ejecttime)
+            # println("Proposed tunnel duration exceeds total available time!")
+            # println("Will be ejected instead at ",ejecttime+switchΔt)
+            # println("Traveled only for Δt = ",Δt)
+            # println("Particle stopped inside pipe")
+            # println("Stopped at (x,y)= (",x2,",",y2,")")
+            # println("Stopped at (r,θ)= (",r_trapped,",",θ_trapped,")")
+            # println("Sending integrator to ",stepnum*switchΔt)
         else
             integrator.u[1] = r2
             integrator.u[2] = θ2
             integrator.t += tunneltime
             # Report
-            println("... Report of sink-eject event ...")
-            println("Before ejection, (r,θ)        = (",r1,",",θ1,")")
-            println("Entered tube at time = ",t1)
-            println("Traveled inside tube = ",tunneltime)
-            println("Ejected from tube at = ",ejecttime)
-            println("Value of ψ before sink-eject = ",ψvalue)
-            println("Value of ψ after sink-eject  = ",ψ2)
-            println("After ejection, (r,θ)        = (",r2,",",θ2,")")
+            # println("... Report of sink-eject event ...")
+            # println("Before ejection, (r,θ)        = (",r1,",",θ1,")")
+            # println("Entered tube at time = ",t1)
+            # println("Traveled inside tube = ",tunneltime)
+            # println("Ejected from tube at = ",ejecttime)
+            # println("Value of ψ before sink-eject = ",ψvalue)
+            # println("Value of ψ after sink-eject  = ",ψ2)
+            # println("After ejection, (r,θ)        = (",r2,",",θ2,")")
             if ~isapprox(ψ2,ψvalue)
-                println("----Warning---Too much deviation from required ψ---")
+                # println("----Warning---Too much deviation from required ψ---")
             end
         end
-        println("..................................")
+        # println("..................................")
     end
 end
 
@@ -406,4 +406,3 @@ function short(variable)
         return round(variable,digits=3)
     end
 end
-

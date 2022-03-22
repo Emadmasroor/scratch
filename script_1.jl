@@ -22,7 +22,8 @@ cb1b = DiscreteCallback(sinkRight,ejectRight!)
 cb2b = DiscreteCallback(sinkLeft,ejectLeft!)
 
 global u0 = [0.6,3π/4]
-for i in 1:80
+nsteps = 750
+for i in 1:(nsteps/2)
     # Declare all global variables
     global u0, switchΔt, stepnum, lefttrapped, righttrapped, sol1, sol2, cb1a,cb1b,cb2a,cb2b,ψvalue
     ##############---Right---####################
@@ -93,8 +94,8 @@ plot(θθ,rr,proj=:polar,
     lims=(0,1),
     linetype=:scatter,
     markersize = 2,
-    legend=:none)
-    savefig("Trajectory141steps.png")
+    legend=:none,size=(1024,1024))
+savefig(string("Trajectory",nsteps,"steps.png"))
 
 # Which points are landing outside circle of radius 1?
 outside=[(rr[i],tt[i], i) for i in 1:length(rr) if rr[i] > 1]
@@ -106,7 +107,8 @@ outside=[(rr[i],tt[i], i) for i in 1:length(rr) if rr[i] > 1]
 
 # Plot the ψ values
 # These will necessarily be wrong whenever the particle is trapped
-plot(tt,HH,
-    linetype=:scatter,
-    markersize=1,
-    legend=:none)
+# plot(tt,HH,
+#     linetype=:scatter,
+#     markersize=1,
+#     legend=:none)
+# savefig(string("streamfunction",nsteps,".png"))
